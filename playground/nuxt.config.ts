@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-02-14',
 
   image: {
-    domains: ['placekittens.com'],
+    domains: ['fastly.picsum.photos'],
   },
 
   ipxCache: {
