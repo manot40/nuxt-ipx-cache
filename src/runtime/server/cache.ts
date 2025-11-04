@@ -24,7 +24,7 @@ export function createIPXCache(cacheDir: string, defaultTTL = 86400) {
         return;
       }
 
-      return { meta, data: new Blob([raw]) };
+      return { meta, data: new Blob([raw as BufferSource]) };
     },
 
     async set(path, { data, meta }) {
