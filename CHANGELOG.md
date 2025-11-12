@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.7
+
+[compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.6...v1.0.7)
+
+### 🏡 Chore
+
+- Bump deps and tidy up ([6ff5ae6](https://github.com/manot40/nuxt-ipx-cache/commit/6ff5ae6))
+
+### ❤️ Contributors
+
+- Manot40 ([@manot40](https://github.com/manot40))
+
 ## v1.0.6
 
 [compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.5...v1.0.6)
