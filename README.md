@@ -1,28 +1,21 @@
-<!--
-Get your module up and running quickly.
-
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: Nuxt IPX Cache
-- Package name: nuxt-ipx-cache
-- Description: Allows IPX transformed images to be stored in cache locally.
--->
-
-# Module Nuxt IPX Cache
+# Nuxt IPX Cache
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
+Cache IPX-optimized images to disk and save your CPU time!
+
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-  <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/my-module?file=playground%2Fapp.vue) -->
-  <!-- - [📖 &nbsp;Documentation](https://example.com) -->
+- [🔗 &nbsp;Repository](https://github.com/manot40/nuxt-ipx-cache)
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-
-- Allows IPX transformed images to be stored in cache locally.
+- **Local Caching**: Stores IPX-transformed images on disk to reduce CPU usage on repeated requests.
+- **Automatic Cache Management**: Handles cache expiration and cleanup based on configurable TTL.
+- **Seamless Integration**: Leverage existing Nuxt's official `@nuxt/image` module.
+- **Configurable**: Customize cache directory, max age, and IPX prefix.
 
 ## Quick Setup
 
@@ -32,46 +25,41 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add nuxt-ipx-cache
 ```
 
-That's it! You can now use Nuxt IPX Cache in your Nuxt app ✨
+The module will automatically start caching IPX-transformed images.
 
-## Contribution
+## Configuration
 
-<details>
-  <summary>Local development</summary>
-  
-  ```bash
-  # Install dependencies
-  npm install
-  
-  # Generate type stubs
-  npm run dev:prepare
-  
-  # Develop with the playground
-  npm run dev
-  
-  # Build the playground
-  npm run dev:build
-  
-  # Run ESLint
-  npm run lint
-  
-  # Run Vitest
-  npm run test
-  npm run test:watch
-  
-  # Release new version
-  npm run release
-  ```
+You can configure the module in your `nuxt.config.ts`:
 
-</details>
+```ts
+export default defineNuxtConfig({
+  modules: ['nuxt-ipx-cache'],
+  ipxCache: {
+    // Max cache age in seconds before getting deleted from disk (default: 86400 - 1 day)
+    maxAge: 86400,
+    // Image cache location relative to process.cwd() (default: '.cache/ipx')
+    cacheDir: '.cache/ipx',
+    // IPX handler endpoint (default: '/_ipx')
+    ipxPrefix: '/_ipx',
+  },
+});
+```
+
+## How It Works
+
+This module intercepts IPX requests and caches the transformed images locally. On subsequent requests for the same transformation, it serves the image from the cache instead of re-processing it, significantly reducing CPU load.
+
+- Images are cached with their metadata (headers like etag, content-type, etc.).
+- Cache entries expire based on the `maxAge` setting.
+- Supports purging cache by adding `cache-control: ipx-purge` header to the request.
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/my-module
-[npm-downloads-src]: https://img.shields.io/npm/dm/my-module.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npm.chart.dev/my-module
-[license-src]: https://img.shields.io/npm/l/my-module.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/my-module
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-ipx-cache/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-version-href]: https://npmjs.com/package/nuxt-ipx-cache
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-ipx-cache.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-downloads-href]: https://npm.chart.dev/nuxt-ipx-cache
+[license-src]: https://img.shields.io/npm/l/nuxt-ipx-cache.svg?style=flat&colorA=020420&colorB=00DC82
+[license-href]: https://npmjs.com/package/nuxt-ipx-cache
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
