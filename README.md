@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
 ## How It Works
 
-This module intercepts IPX requests and caches the transformed images locally. On subsequent requests for the same transformation, it serves the image from the cache instead of re-processing it, significantly reducing CPU load.
+This module inspired by [this issue](https://github.com/nuxt/image/issues/1400). Intercepts IPX requests and caches the transformed images locally. On subsequent requests for the same transformation, it serves the image from the cache instead of re-processing it, significantly reducing CPU load.
 
 - Images are cached with their metadata (headers like etag, content-type, etc.).
 - Cache entries expire based on the `maxAge` setting.
