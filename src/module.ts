@@ -1,7 +1,5 @@
 import defu from 'defu';
 
-import { join } from 'node:path';
-
 import { addServerImports, addServerPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
 
 export interface ModuleOptions {
@@ -9,6 +7,7 @@ export interface ModuleOptions {
   maxAge?: number;
   /** Image cache location relative to `process.cwd()`. (defaults to `.cache/ipx`) */
   cacheDir?: string;
+  /** IPX handler endpoint, leave blank to use `@nuxt/image` default: `/_ipx/*` */
   ipxPrefix?: string;
 }
 
@@ -21,7 +20,7 @@ export default defineNuxtModule<ModuleOptions>({
 
   defaults: {
     maxAge: 60 * 60 * 24,
-    cacheDir: join(process.cwd(), '.cache/ipx'),
+    cacheDir: '.cache/ipx',
     ipxPrefix: '/_ipx',
   },
 

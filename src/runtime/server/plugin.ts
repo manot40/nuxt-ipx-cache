@@ -1,8 +1,8 @@
 import type { IncomingHttpHeaders, ServerResponse } from 'node:http';
 
-import { createIPXCache } from './cache';
-
 import { PassThrough } from 'node:stream';
+
+import { createIPXCache } from './cache';
 import { CaptureStream } from '../utils/capture-stream';
 
 import { sendStream, setHeaders, getHeader } from 'h3';

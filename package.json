@@ -38,7 +38,7 @@
     "@nuxt/kit": "^4.x || ^3.x",
     "defu": "^6.1.4",
     "ipx": "3.x || 2.x",
-    "unstorage": "^1.17.2"
+    "unstorage": "^1.17.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "^3.0.1",
