@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.8
+
+[compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.7...v1.0.8)
+
+### 🏡 Chore
+
+- Bare minimum readme ([0b900e8](https://github.com/manot40/nuxt-ipx-cache/commit/0b900e8))
+
+### ❤️ Contributors
+
+- Manot40 ([@manot40](https://github.com/manot40))
+
 ## v1.0.7
 
 [compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.6...v1.0.7)
