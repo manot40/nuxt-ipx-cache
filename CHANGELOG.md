@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## v1.0.8
 
 [compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.7...v1.0.8)
@@ -99,7 +98,6 @@
 
 ## v1.0.0
 
-
 ### 🩹 Fixes
 
 - Error ([5058f65](https://github.com/manot40/nuxt-ipx-cache/commit/5058f65))
@@ -108,4 +106,3 @@
 ### ❤️ Contributors
 
 - Kevin Sandiho ([@manot40](http://github.com/manot40))
-
