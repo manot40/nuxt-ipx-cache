@@ -1,10 +1,12 @@
 import type { IncomingHttpHeaders, ServerResponse } from 'node:http';
 
 import { PassThrough } from 'node:stream';
+import { basename, extname } from 'node:path';
 
-import { createIPXCache } from './cache';
 import { CaptureStream } from '../utils/capture-stream';
+import { createIPXCache } from './cache';
 
+import { hash } from 'ohash';
 import { sendStream, setHeaders, getHeader } from 'h3';
 import { defineNitroPlugin, useRuntimeConfig } from 'nitropack/runtime';
 
@@ -18,10 +20,7 @@ export default defineNitroPlugin((nitroApp) => {
     if (!evt.path.startsWith(ipxPrefix)) return;
 
     const originalRes = evt.node.res;
-    const reqUrl = (evt.path || '')
-      .replace(/http(s?):\/\/|,/g, '')
-      .replaceAll(ipxPrefix, '')
-      .replaceAll('&', '-');
+    const reqUrl = processPath(ipxPrefix, evt.path);
 
     if (!getHeader(evt, 'cache-control')?.includes('ipx-purge')) {
       /** Load from cache if there is any */
@@ -46,9 +45,9 @@ export default defineNitroPlugin((nitroApp) => {
     });
     originalRes.end = <CustomStream<ServerResponse>>((chunk, encoding, callback) => {
       const expires = new Date(Date.now() + config.maxAge * 1000).toUTCString();
-      if (chunk) passThrough.write(chunk, encoding as BufferEncoding, callback);
+      if (Buffer.isBuffer(chunk)) passThrough.write(chunk, encoding as BufferEncoding, callback);
 
-      setHeaders(evt, { expires, 'cache-status': 'MISS' });
+      if (!originalRes.headersSent) setHeaders(evt, { expires, 'cache-status': 'MISS' });
       originalEnd(chunk, encoding, callback);
       if (originalRes.statusCode !== 200) return originalRes;
 
@@ -68,6 +67,21 @@ export default defineNitroPlugin((nitroApp) => {
     });
   });
 });
+
+function processPath(prefix: string, original = ''): string {
+  const [, , params, ...upstream] = original.split('/');
+  const parsedParams = params.replaceAll('&', '-');
+
+  const asUrl = new URL(decodeURIComponent(upstream.join('/')), 'http://localhost');
+  const pathSplit = asUrl.pathname.split('/');
+  const fullFileName = pathSplit.pop() || '';
+
+  const extName = extname(fullFileName);
+  let fileName = basename(fullFileName, extName);
+
+  if (asUrl.search) fileName = `${fileName}_${hash(asUrl.search)}`;
+  return `${asUrl.hostname}/${parsedParams}/${pathSplit.join('/')}/${fileName}${extName}`;
+}
 
 type CustomStream<T> = (
   chunk: unknown,
