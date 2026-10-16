@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.1
+
+[compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.1.0...v1.1.1)
+
+### 🩹 Fixes
+
+- Nitro-plugin crash ([b2f4a58](https://github.com/manot40/nuxt-ipx-cache/commit/b2f4a58))
+
+### ❤️ Contributors
+
+- Kevin Sandi Ho <kevin.sandi@citis.kompasgramedia.com>
+
 ## v1.1.0
 
 [compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.8...v1.1.0)
