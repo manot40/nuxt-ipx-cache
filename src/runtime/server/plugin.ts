@@ -80,7 +80,7 @@ function processPath(prefix: string, original = ''): string {
   let fileName = basename(fullFileName, extName);
 
   if (asUrl.search) fileName = `${fileName}_${hash(asUrl.search)}`;
-  return `${asUrl.hostname}/${parsedParams}/${pathSplit.join('/')}/${fileName}${extName}`;
+  return `${asUrl.hostname}/${pathSplit.join('/')}/${parsedParams}/${fileName}${extName}`;
 }
 
 type CustomStream<T> = (
