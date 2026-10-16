@@ -1,6 +1,6 @@
 import defu from 'defu';
 
-import { addNitroPlugin, addServerImports, createResolver, defineNuxtModule } from '@nuxt/kit';
+import { addServerImports, addServerPlugin, createResolver, defineNuxtModule } from '@nuxt/kit';
 
 export interface ModuleOptions {
   /** Max cache age in seconds before getting deleted from disk. (default 1 day) */
@@ -38,7 +38,7 @@ export default defineNuxtModule<ModuleOptions>({
       },
     });
 
-    addNitroPlugin(resolve('./runtime/server/plugin'));
+    addServerPlugin(resolve('./runtime/server/plugin'));
     addServerImports([{ name: 'createIPXCache', from: resolve('./runtime/server/cache') }]);
   },
 });
