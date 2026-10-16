@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.2
+
+[compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.1.1...v1.1.2)
+
+### 🩹 Fixes
+
+- Reversed path name ([bea0984](https://github.com/manot40/nuxt-ipx-cache/commit/bea0984))
+
+### ❤️ Contributors
+
+- Kevin Sandi Ho <kevin.sandi@citis.kompasgramedia.com>
+
 ## v1.1.1
 
 [compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.1.0...v1.1.1)
