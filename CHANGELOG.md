@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.1.0
+
+[compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.8...v1.1.0)
+
+### 🩹 Fixes
+
+- Chunk error on nuxt 4.6 ([10cb927](https://github.com/manot40/nuxt-ipx-cache/commit/10cb927))
+- Move npm script to pnpm ([e2b1a85](https://github.com/manot40/nuxt-ipx-cache/commit/e2b1a85))
+
+### 🏡 Chore
+
+- Add issue reference ([6d6326b](https://github.com/manot40/nuxt-ipx-cache/commit/6d6326b))
+- Add MIT license file ([bb935e7](https://github.com/manot40/nuxt-ipx-cache/commit/bb935e7))
+- Bump to nuxt 4.6 and ipx 4 ([bbe0b25](https://github.com/manot40/nuxt-ipx-cache/commit/bbe0b25))
+
+### ❤️ Contributors
+
+- Kevin Sandi Ho <kevin.sandi@citis.kompasgramedia.com>
+- Manot40 <kevinsandiho290100@gmail.com>
+
 ## v1.0.8
 
 [compare changes](https://github.com/manot40/nuxt-ipx-cache/compare/v1.0.7...v1.0.8)
